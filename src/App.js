@@ -1,27 +1,46 @@
-import React from 'react';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import ProtectedRoute from './components/ProtectedRoute';
-import SignInPage from './components/SignInPage';
-import HomePage from './components/HomePage';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <ProtectedRoute><HomePage/></ProtectedRoute>,
-  },
-  {
-    path: "/signin",
-    element: <SignInPage />
-  }
-]);
+import './global.css';
+import { useScrollToTop } from './hooks/use-scroll-to-top';
 
-function App() {
+import Router from './routes/sections';
+import ThemeProvider from './theme';
+
+// ----------------------------------------------------------------------
+
+export default function App() {
+  useScrollToTop();
+
   return (
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
   );
 }
 
-export default App;
+// import React from 'react';
+// import {
+//   createBrowserRouter,
+//   RouterProvider,
+// } from "react-router-dom";
+// import ProtectedRoute from './components/ProtectedRoute';
+// import SignInPage from './components/SignInPage';
+// import HomePage from './components/HomePage';
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <ProtectedRoute><HomePage/></ProtectedRoute>,
+//   },
+//   {
+//     path: "/signin",
+//     element: <SignInPage />
+//   }
+// ]);
+
+// function App() {
+//   return (
+//     <RouterProvider router={router} />
+//   );
+// }
+
+// export default App;
